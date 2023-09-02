@@ -1,0 +1,15 @@
+---
+- name: Setup macbook for development
+  hosts: all
+
+  roles:
+    - role: geerlingguy.mac.homebrew
+      tags: [ 'homebrew' ]
+    - role: nvim
+      tags: [ 'nvim' ]
+    - role: oh-my-zsh
+      tags: [ 'oh-my-zsh' ]
+    - role: git-repos
+      tags: [ 'git-repos' ]
+    - role: dotfiles
+      tags: [ 'dotfiles' ]

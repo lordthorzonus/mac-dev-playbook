@@ -1,0 +1,80 @@
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set exchange
+set NERDTree
+" Trying the new syntax
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" <C-n> seems to me as a better solution than <M-n>,
+" but we should finally support vim-visual-multi because vim-multiple-cursors is deprecated now
+map <C-n> <Plug>NextWholeOccurrence
+
+""" Common settings -------------------------
+set showmode
+set so=999
+set incsearch
+set nu
+set rnu
+
+""" Idea specific settings ------------------
+set ideajoin
+set idearefactormode=keep
+set ideamarks
+
+nmap <leader>wd :action MoveEditorToOppositeTabGroup<cr>
+
+nnoremap H :action Back<cr>
+nnoremap L :action Forward<cr>
+nnoremap gi :action GotoImplementation<cr>
+
+nnoremap [m :action MethodUp<cr>
+" Next method.
+nnoremap ]m :action MethodDown<cr>
+map <leader>[ :action EditorCodeBlockStart<CR>
+map <leader>] :action EditorCodeBlockEnd<CR>
+
+nnoremap <c-s> :action FileStructurePopup<CR>
+nnoremap <c-a> :action HarpoonerAddFile<CR>
+nnoremap <c-e> :action HarpoonerQuickMenu<CR>
+
+map <leader>d <Action>(Debug)
+map <leader>t :action Refactorings.QuickListPopupAction<CR>
+nmap <leader>rr :action RenameElement<cr>
+nmap <leader>r :action Run<cr>
+nmap <leader>tr :action RunClass<cr>
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+nmap <leader>e <Action>(RecentLocations)
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <c-x> <Action>(ShowErrorDescription)
+map <S-Space> <Action>(GotoNextError)
+
+map <leader>l <Action>(ReformatCode)
+map
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
+map <leader>t :action ActivateTerminalToolWindow<CR>
+map <leader>tt :action Terminal.OpenInTerminal<CR>
+nnoremap <c-q> :action HideAllWindows<CR>
+inoremap jj <ESC>
+map <leader>cc :action StringManipulation.ToCamelCase<CR>
+map ,cc :action StringManipulation.ToPascalCase<CR>
+map .cc :action StringManipulation.ToSnakeCase<CR>
+map ,cu :action StringManipulation.ToUpperCase<CR>
+" Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
+map <leader>i ~hi
+" Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
+vmap <leader>u d~h

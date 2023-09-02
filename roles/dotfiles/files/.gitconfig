@@ -1,0 +1,50 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Juuso Leinonen
+	email = leinonen.juuso@gmail.com
+
+[apply]
+	whitespace = warn
+
+[core]
+	excludesFile = ~/.gitignore
+	attributesFile = ~/.gitattributes
+	whitespace = space-before-tab, -indent-with-non-tab, 
+trailing-space
+	trustctime = false
+	precomposeunicode = false
+	editor = nvim
+
+[colors]
+	ui = auto
+
+[init]
+	defaultBranch = main
+
+[diff]
+	renames = copies
+
+[help]
+	autocorrect = 1
+
+[merge]
+	log = true
+
+[push]
+	default = simple
+	followTags = true
+	autoSetupRemote = true
+
+[pull]
+	ff = only
+
+[diff "ansible-vault"]
+	textconv = ansible-vault view
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true

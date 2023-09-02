@@ -1,0 +1,13 @@
+---
+- name: Ensure base folder structure is present
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ git_project_base_folders }}"
+- name: Clone required git repos to their specified destinations
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    version: "{{ item.version }}"
+    clone: yes
+  with_items: "{{ git_repos_to_clone }}"
