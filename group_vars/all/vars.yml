@@ -77,16 +77,16 @@ git_repos_to_clone:
   - repo: "https://github.com/tmux-plugins/tpm"
     dest: "{{home_dir}}/.tmux/plugins/tpm"
     version: master
-  - repo: "https://github.com/lordthorzonus/ble2mqtt-gateway"
+  - repo: "git@github.com:lordthorzonus/ble2mqtt-gateway"
     dest: "{{home_dir}}/projects/personal/ble2mqtt-gateway"
     version: main
-  - repo: "https://github.com/lordthorzonus/homelab-provisioning"
+  - repo: "git@github.com:lordthorzonus/homelab-provisioning"
     dest: "{{home_dir}}/projects/personal/homelab-provisioning"
     version: main
-  - repo: "https://github.com/lordthorzonus/oura-api-exporter"
+  - repo: "git@github.com:lordthorzonus/oura-api-exporter"
     dest: "{{home_dir}}/projects/personal/oura-api-exporter"
     version: main
-  - repo: "https://github.com/lordthorzonus/php-dataloader"
+  - repo: "git@github.com:lordthorzonus/php-dataloader"
     dest: "{{home_dir}}/projects/personal/php-dataloader"
     version: master
 git_project_base_folders:
