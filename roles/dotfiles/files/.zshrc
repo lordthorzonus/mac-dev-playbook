@@ -86,7 +86,6 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   nvm
-  zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh

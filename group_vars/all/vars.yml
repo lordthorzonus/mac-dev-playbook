@@ -3,13 +3,12 @@
 #############################################
 home_dir: "~"
 
-
 ##############################################
 # Homebrew
 ##############################################
 homebrew_installed_packages:
   - git
-  - github/gh/gh
+  - gh
   - httpie
   - nvm
   - ssh-copy-id
@@ -40,6 +39,8 @@ homebrew_cask_apps:
   - obsidian
   - insomnia
 
+homebrew_cask_accept_external_apps: true
+
 ##############################################
 # Dotfiles
 ##############################################
@@ -67,7 +68,6 @@ omz_plugins:
     git_repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
   - name: zsh-completions
     git_repo: "https://github.com/zsh-users/zsh-completions.git"
-
 
 
 ##############################################
