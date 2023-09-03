@@ -64,7 +64,17 @@ return require('packer').startup(function(use)
     }
     use 'David-Kunz/jester'
     use 'numToStr/Comment.nvim'
-    use 'tpope/vim-surround'
     use 'nvim-lualine/lualine.nvim'
     use 'Pocco81/auto-save.nvim'
+    use('MunifTanjim/prettier.nvim')
+    use 'kylechui/nvim-surround'
+
+    --Markdown preview
+    use 'ellisonleao/glow.nvim'
+    use 'simrat39/symbols-outline.nvim'
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
 end)

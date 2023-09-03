@@ -6,7 +6,6 @@ lsp.ensure_installed({
     'tsserver',
     'eslint',
     'ansible-lint',
-    'prettier',
     'rust_analyzer',
     'lua_ls',
     'dockerls',
@@ -75,6 +74,9 @@ lsp.on_attach(function(client, bufnr)
     end, opts)
     vim.keymap.set("n", "[d", function()
         vim.diagnostic.goto_next()
+    end, opts)
+    vim.keymap.set("n", "<A-Enter>", function()
+        vim.lsp.buf.code_action()
     end, opts)
     vim.keymap.set("n", "]d", function()
         vim.diagnostic.goto_prev()

@@ -1,8 +1,8 @@
-# Ansible playbook for setting up a macbook for development
+# Ansible playbook for setting up a MacBook for development
 
 ## Installation
 
-- Install [homebrew](https://brew.sh/)
+- Install [Homebrew](https://brew.sh/)
 - Run the following commands:
 
 ```bash
