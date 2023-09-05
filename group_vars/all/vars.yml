@@ -10,7 +10,6 @@ homebrew_installed_packages:
   - git
   - gh
   - httpie
-  - nvm
   - ssh-copy-id
   - openssl
   - wget
@@ -20,11 +19,14 @@ homebrew_installed_packages:
   - kubernetes-cli
   - zsh
   - tmux
+  - sketchybar
 
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
+  - homebrew/cask-fonts
   - koekeishiya/formulae
+  - FelixKratz/formulae
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -38,6 +40,8 @@ homebrew_cask_apps:
   - raycast
   - obsidian
   - insomnia
+  - font-jetbrains-mono-nerd-font
+  - font-fira-code-nerd-font
 
 homebrew_cask_accept_external_apps: true
 
@@ -53,6 +57,7 @@ dotfiles_files:
   - .config/skhd/skhdrc
   - .config/yabai/yabairc
   - .config/nvim
+  - .config/sketchybar
   - .tmux.conf
 
 ##############################################
@@ -69,7 +74,6 @@ omz_plugins:
     git_repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
   - name: zsh-completions
     git_repo: "https://github.com/zsh-users/zsh-completions.git"
-
 
 ##############################################
 # git-repos

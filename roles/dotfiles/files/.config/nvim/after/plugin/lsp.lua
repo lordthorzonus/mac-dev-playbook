@@ -5,9 +5,10 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     'tsserver',
     'eslint',
-    'ansible-lint',
     'rust_analyzer',
+    'ansiblels',
     'lua_ls',
+    'spectral',
     'dockerls',
     'docker_compose_language_service',
     'kotlin_language_server',
@@ -103,11 +104,17 @@ lsp.format_on_save({
     servers = {
         ['lua_ls'] = { 'lua' },
         ['rust_analyzer'] = { 'rust' },
+        ['null-ls'] = { 'css', 'html', 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'yaml',
+            'rust' },
+        ['shellfmt'] = { 'bash' }
     }
 })
 
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = true,
 })

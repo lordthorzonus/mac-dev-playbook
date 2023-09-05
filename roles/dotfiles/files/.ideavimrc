@@ -45,8 +45,6 @@ map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>
 
 nnoremap <c-s> :action FileStructurePopup<CR>
-nnoremap <c-a> :action HarpoonerAddFile<CR>
-nnoremap <c-e> :action HarpoonerQuickMenu<CR>
 
 map <leader>d <Action>(Debug)
 map <leader>t :action Refactorings.QuickListPopupAction<CR>
@@ -55,10 +53,12 @@ nmap <leader>r :action Run<cr>
 nmap <leader>tr :action RunClass<cr>
 map <leader>c <Action>(Stop)
 map <leader>z <Action>(ToggleDistractionFreeMode)
+
 nmap <leader>e <Action>(RecentLocations)
 map <leader>s <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+
 map <c-x> <Action>(ShowErrorDescription)
 map <S-Space> <Action>(GotoNextError)
 
@@ -66,10 +66,10 @@ map <leader>l <Action>(ReformatCode)
 map
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
-map <leader>t :action ActivateTerminalToolWindow<CR>
-map <leader>tt :action Terminal.OpenInTerminal<CR>
+
 nnoremap <c-q> :action HideAllWindows<CR>
 inoremap jj <ESC>
+
 map <leader>cc :action StringManipulation.ToCamelCase<CR>
 map ,cc :action StringManipulation.ToPascalCase<CR>
 map .cc :action StringManipulation.ToSnakeCase<CR>
@@ -78,3 +78,11 @@ map ,cu :action StringManipulation.ToUpperCase<CR>
 map <leader>i ~hi
 " Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
 vmap <leader>u d~h
+
+nnoremap <leader>0 :action GotoBookmark0<CR>
+nnoremap <leader>1 :action GotoBookmark1<CR>
+nnoremap <leader>2 :action GotoBookmark2<CR>
+nnoremap <leader>3 :action GotoBookmark3<CR>
+nnoremap <leader>4 :action GotoBookmark4<CR>
+nnoremap <leader>5 :action GotoBookmark5<CR>
+nnoremap <leader>6 :action GotoBookmark6<CR>

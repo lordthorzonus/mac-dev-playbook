@@ -26,6 +26,16 @@ yabai -m config window_shadow                off
 # custom
 yabai -m config split_ratio 0.5
 
+
+# spaces
+yabai -m space 1 --label Slack 
+yabai -m space 2 --label Chrome
+yabai -m space 3 --label IntelliJ
+yabai -m space 4 --label Terminal
+yabai -m space 5 --label Obsidian 
+yabai -m space 6 --label Other1
+yabai -m space 7 --label social
+
 # applications
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^Messages$" manage=off

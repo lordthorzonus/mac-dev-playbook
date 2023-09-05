@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+source ~/.config/sketchybar/styles/catpuccin-mocha.sh
+source ~/.config/sketchybar/styles/bar.sh
+
+# Spaces
+source $PLUGIN_DIR/space.sh
+source $PLUGIN_DIR/front_app.sh
+
+
+sketchybar --add item front_app left \
+    --set front_app script="$PLUGIN_DIR/front_app.sh" \
+    icon.drawing=off \
+    label.color=$RED \
+    --subscribe front_app front_app_switched
+
+sketchybar --add item clock right \
+    --set clock update_freq=10 \
+    icon= \
+    icon.color=$PEACH \
+    script="$PLUGIN_DIR/clock.sh" \
+    \
+    --add item wifi right \
+    --set wifi script="$PLUGIN_DIR/wifi.sh" \
+    icon= \
+    icon.color=$GREEN \
+    --subscribe wifi wifi_change \
+    \
+    --add item battery right \
+    --set battery script="$PLUGIN_DIR/battery.sh" \
+    update_freq=120 \
+    --subscribe battery system_woke power_source_change
+
+# Finalize setup
+sketchybar --update
