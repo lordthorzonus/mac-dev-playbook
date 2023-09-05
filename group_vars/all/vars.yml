@@ -52,7 +52,6 @@ dotfiles_home: "{{home_dir}}"
 dotfiles_files:
   - .zshrc
   - .gitignore
-  - .gitconfig
   - .ideavimrc
   - .config/skhd/skhdrc
   - .config/yabai/yabairc
