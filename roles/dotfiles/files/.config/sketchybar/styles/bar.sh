@@ -4,7 +4,7 @@ source ~/.config/sketchybar/styles/catpuccin-mocha.sh
 
 # Bar config
 sketchybar --bar \
-    height=34 \
+    height=26 \
     corner_radius=0 \
     border_width=0 \
     margin=0 \
@@ -13,7 +13,7 @@ sketchybar --bar \
     padding_left=10 \
     padding_right=10 \
     color=$BG \
-    topmost=off \
+    topmost=false \
     sticky=off \
     font_smoothing=off \
     y_offset=-2 \

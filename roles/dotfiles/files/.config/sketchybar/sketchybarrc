@@ -33,5 +33,15 @@ sketchybar --add item clock right \
     update_freq=120 \
     --subscribe battery system_woke power_source_change
 
+sketchybar --add item spot right \
+           --set spot update_freq=1 \
+                      icon.drawing=off \
+                      icon.color=$RED \
+                      label.color=$RED \
+                      updates=on \
+                      script="~/.config/sketchybar/plugins/spotify.sh" \
+                      background.padding_left=0
+
+
 # Finalize setup
 sketchybar --update

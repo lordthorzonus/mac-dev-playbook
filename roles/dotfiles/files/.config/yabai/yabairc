@@ -5,11 +5,11 @@ sudo yabai --load-sa
 yabai -m config layout                      bsp
 
 # window gaps
-yabai -m config top_padding                 0
+yabai -m config top_padding                 26
 yabai -m config bottom_padding              0
 yabai -m config left_padding                0
 yabai -m config right_padding               1
-yabai -m config window_gap                  2
+yabai -m config window_gap                  5
 yabai -m config window_placement            second_child
 
 # display

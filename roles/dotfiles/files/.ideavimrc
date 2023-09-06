@@ -59,7 +59,8 @@ map <leader>s <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 
-map <c-x> <Action>(ShowErrorDescription)
+map <c-h> <Action>(ShowErrorDescription)
+map <c-j> <Action>(QuickJavaDoc)
 map <S-Space> <Action>(GotoNextError)
 
 map <leader>l <Action>(ReformatCode)
