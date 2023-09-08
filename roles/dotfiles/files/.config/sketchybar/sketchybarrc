@@ -52,6 +52,5 @@ sketchybar --add item spot right \
                       script="~/.config/sketchybar/plugins/spotify.sh" \
                       background.padding_left=0
 
-
 # Finalize setup
 sketchybar --update
