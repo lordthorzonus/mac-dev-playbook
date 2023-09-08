@@ -52,8 +52,11 @@ return require('packer').startup(function(use)
         }
     }
 
+    use {
+        "zbirenbaum/copilot.lua",
+    }
+
     use("folke/zen-mode.nvim")
-    use("github/copilot.vim")
     use("eandrju/cellular-automaton.nvim")
     use("laytan/cloak.nvim")
     use {
@@ -62,13 +65,12 @@ return require('packer').startup(function(use)
             require("nvim-autopairs").setup {}
         end
     }
-    use 'David-Kunz/jester'
+    use 'vim-test/vim-test'
     use 'numToStr/Comment.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'Pocco81/auto-save.nvim'
     use('MunifTanjim/prettier.nvim')
     use 'kylechui/nvim-surround'
-
     --Markdown preview
     use 'ellisonleao/glow.nvim'
     use 'simrat39/symbols-outline.nvim'

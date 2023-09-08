@@ -20,6 +20,8 @@ homebrew_installed_packages:
   - zsh
   - tmux
   - sketchybar
+  - lazygit
+  - ripgrep
 
 homebrew_taps:
   - homebrew/core
@@ -97,3 +99,14 @@ git_project_base_folders:
   - "{{home_dir}}/projects"
   - "{{home_dir}}/projects/personal"
   - "{{home_dir}}/projects/work"
+
+##############################################
+# nvm
+##############################################
+nvm_version: "0.39.5"
+nvm_location: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+nvm_node_versions:
+  - version: "v16"
+  - version: "v18"
+  - version: "v20"
+nvm_default_node_version: "v16"

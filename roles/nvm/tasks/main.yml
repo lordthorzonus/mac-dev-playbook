@@ -1,0 +1,19 @@
+- name: Install nvm
+  ansible.builtin.shell: >
+    PROFILE=/dev/null bash -c curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{nvm_version}}/install.sh | bash
+  args:
+    creates: "{{ nvm_location }}"
+
+- name: Install node versions
+  ansible.builtin.shell: >
+    sh {{ nvm_location }} install {{item.version}}
+  with_items: "{{ nvm_node_versions }}"
+
+- name: Set default node version
+  ansible.builtin.shell: >
+    sh {{ nvm_location }} alias default {{nvm_default_node_version}}
+
+- name: Set aliases for node versions
+  ansible.builtin.shell: >
+    sh {{ nvm_location }} alias {{ item.alias }} {{ item.version }}
+  loop: "{{ nvm_node_versions | selectattr('alias', 'defined') | list }}"

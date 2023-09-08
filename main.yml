@@ -4,12 +4,14 @@
 
   roles:
     - role: geerlingguy.mac.homebrew
-      tags: [ 'homebrew' ]
+      tags: ["homebrew"]
     - role: nvim
-      tags: [ 'nvim' ]
+      tags: ["nvim"]
     - role: oh-my-zsh
-      tags: [ 'oh-my-zsh' ]
+      tags: ["oh-my-zsh"]
+    - role: nvm
+      tags: ["nvm"]
     - role: git-repos
-      tags: [ 'git-repos' ]
+      tags: ["git-repos"]
     - role: dotfiles
-      tags: [ 'dotfiles' ]
+      tags: ["dotfiles"]

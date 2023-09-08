@@ -104,8 +104,7 @@ lsp.format_on_save({
     servers = {
         ['lua_ls'] = { 'lua' },
         ['rust_analyzer'] = { 'rust' },
-        ['null-ls'] = { 'css', 'html', 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'yaml',
-            'rust' },
+        ['prettier'] = { 'css', 'html', 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact' },
         ['shellfmt'] = { 'bash' }
     }
 })
