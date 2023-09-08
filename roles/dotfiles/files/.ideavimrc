@@ -62,6 +62,7 @@ map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 map <c-h> <Action>(ShowErrorDescription)
 map <c-j> <Action>(QuickJavaDoc)
 map <S-Space> <Action>(GotoNextError)
+map <leader>ff <Action>(SearchEverywhere)<CR>
 
 map <leader>l <Action>(ReformatCode)
 map

@@ -16,6 +16,7 @@ sketchybar --add item front_app left \
     label.color=$RED \
     --subscribe front_app front_app_switched
 
+
 sketchybar --add item clock right \
     --set clock update_freq=10 \
     icon= \
