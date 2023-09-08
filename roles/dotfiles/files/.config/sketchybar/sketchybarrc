@@ -8,7 +8,7 @@ source ~/.config/sketchybar/styles/bar.sh
 # Spaces
 source $PLUGIN_DIR/space.sh
 source $PLUGIN_DIR/front_app.sh
-
+source $PLUGIN_DIR/volume.sh
 
 sketchybar --add item front_app left \
     --set front_app script="$PLUGIN_DIR/front_app.sh" \
@@ -33,6 +33,15 @@ sketchybar --add item clock right \
     --set battery script="$PLUGIN_DIR/battery.sh" \
     update_freq=120 \
     --subscribe battery system_woke power_source_change
+
+SOUND_CLICK_SCRIPT="open /System/Library/PreferencePanes/Sound.prefPane"
+
+sketchybar --add item sound right                                             \
+           --set sound update_freq=0                                             \
+                       icon.color=$YELLOW                                     \
+                       script="$PLUGIN_DIR/volume.sh"                             \
+                       click_script="$SOUND_CLICK_SCRIPT"                        \
+           --subscribe sound volume_change                                       \
 
 sketchybar --add item spot right \
            --set spot update_freq=1 \
