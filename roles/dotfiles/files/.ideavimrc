@@ -62,9 +62,8 @@ map <c-h> <Action>(ShowErrorDescription)
 map <c-j> <Action>(QuickJavaDoc)
 map <S-Space> <Action>(GotoNextError)
 map <leader>ff <Action>(SearchEverywhere)<CR>
+map <leader>fo <Action>(ReformatCode)<CR>
 
-map <leader>l <Action>(ReformatCode)
-map
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
 
