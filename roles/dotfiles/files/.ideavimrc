@@ -46,6 +46,8 @@ map <leader>] :action EditorCodeBlockEnd<CR>
 
 nnoremap <c-s> :action FileStructurePopup<CR>
 
+map <c-w>m :action MaximizeEditorInSplit<CR>
+
 map <leader>d <Action>(Debug)
 map <leader>t <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>rr :action RenameElement<cr>
@@ -58,8 +60,8 @@ map <leader>s <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 
-map <c-h> <Action>(ShowErrorDescription)
-map <c-j> <Action>(QuickJavaDoc)
+nmap <c-h> <Action>(ShowErrorDescription)
+inoremap <c-h> :action ParameterInfo<CR>
 map <S-Space> <Action>(GotoNextError)
 map <leader>ff <Action>(SearchEverywhere)<CR>
 map <leader>fo <Action>(ReformatCode)<CR>

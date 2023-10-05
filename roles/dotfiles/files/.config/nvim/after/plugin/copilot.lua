@@ -14,6 +14,9 @@ require('copilot').setup({
     },
 
     filetypes = {
+        ["yaml"] = true,
+        ["typescript"] = true,
+        ["lua"] = true,
         ["*"] = true,
     },
 });

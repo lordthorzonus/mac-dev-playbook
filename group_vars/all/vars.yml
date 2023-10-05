@@ -75,6 +75,8 @@ omz_plugins:
     git_repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
   - name: zsh-completions
     git_repo: "https://github.com/zsh-users/zsh-completions.git"
+  - name: zsh-vi-mode
+    git_repo: "https://github.com/jeffreytse/zsh-vi-mode"
 
 ##############################################
 # git-repos

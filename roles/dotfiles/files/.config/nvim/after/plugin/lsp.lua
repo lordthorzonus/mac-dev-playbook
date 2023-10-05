@@ -41,7 +41,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ["<C-Space>"] = cmp.mapping.complete(),
 })
 
-cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
@@ -94,6 +93,9 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function()
         vim.lsp.buf.signature_help()
     end, opts)
+
+    vim.keymap.set("n", "<leader>t", ":lua vim.lsp.buf.code_action()<CR>")
+    vim.keymap.set("n", "<leader>fo", ":lua vim.lsp.buf.formatting()<CR>")
 end)
 
 lsp.format_on_save({
