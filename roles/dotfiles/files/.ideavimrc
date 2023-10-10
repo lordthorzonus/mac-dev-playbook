@@ -34,8 +34,10 @@ set ideamarks
 
 nmap <leader>wd :action MoveEditorToOppositeTabGroup<cr>
 
-nnoremap H :action Back<cr>
-nnoremap L :action Forward<cr>
+nnoremap <C-i> :action Forward<cr>
+nnoremap <C-o> :action Back<cr>
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
 nnoremap gi :action GotoImplementation<cr>
 
 nnoremap [m :action MethodUp<cr>
