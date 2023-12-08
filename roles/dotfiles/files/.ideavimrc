@@ -63,6 +63,7 @@ map <leader>a <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 
 nmap <c-h> <Action>(ShowErrorDescription)
+nmap <leader>vd <Action>(ShowErrorDescription)
 inoremap <c-h> :action ParameterInfo<CR>
 map <S-Space> <Action>(GotoNextError)
 map <leader>ff <Action>(SearchEverywhere)<CR>

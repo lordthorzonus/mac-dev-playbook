@@ -73,7 +73,6 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  dotenv
   jsontools
   iterm2
   common-aliases
@@ -140,3 +139,12 @@ esac
 # pnpm end
 
 export TERM="xterm-256color"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/juuso.leinonen/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/juuso.leinonen/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/juuso.leinonen/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/juuso.leinonen/google-cloud-sdk/completion.zsh.inc'; fi
+
+ [[ ! -r /Users/juuso.leinonen/.opam/opam-init/init.zsh ]] || source /Users/juuso.leinonen/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+

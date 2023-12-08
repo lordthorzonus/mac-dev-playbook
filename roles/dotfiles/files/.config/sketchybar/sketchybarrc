@@ -23,12 +23,6 @@ sketchybar --add item clock right \
     icon.color=$PEACH \
     script="$PLUGIN_DIR/clock.sh" \
     \
-    --add item wifi right \
-    --set wifi script="$PLUGIN_DIR/wifi.sh" \
-    icon= \
-    icon.color=$GREEN \
-    --subscribe wifi wifi_change \
-    \
     --add item battery right \
     --set battery script="$PLUGIN_DIR/battery.sh" \
     update_freq=120 \
@@ -51,6 +45,19 @@ sketchybar --add item spot right \
                       updates=on \
                       script="~/.config/sketchybar/plugins/spotify.sh" \
                       background.padding_left=0
+
+sketchybar --add item  ip_address right                              \
+           --set       ip_address script="$PLUGIN_DIR/ip_address.sh" \
+                                  update_freq=30                     \
+                                  padding_left=2                     \
+                                  padding_right=8                    \
+                                  background.border_width=0          \
+                                  background.corner_radius=6         \
+                                  background.height=24               \
+                                  icon.highlight=on                  \
+                                  label.highlight=on                 \
+           --subscribe ip_address wifi_change                        \
+            
 
 # Finalize setup
 sketchybar --update

@@ -3,4 +3,3 @@
   shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
   become: yes
 
-- name:
