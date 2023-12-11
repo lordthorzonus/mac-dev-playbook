@@ -100,6 +100,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set("n", "<leader>t", ":lua vim.lsp.buf.code_action()<CR>")
     vim.keymap.set("n", "<leader>fo", ":lua vim.lsp.buf.formatting()<CR>")
+    vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 end)
 
 lsp.format_on_save({
