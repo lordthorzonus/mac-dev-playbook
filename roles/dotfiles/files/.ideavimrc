@@ -59,9 +59,8 @@ map <leader>z <Action>(ToggleDistractionFreeMode)
 
 nmap <leader>e <Action>(RecentLocations)
 map <leader>s <Action>(SelectInProjectView)
-map <leader>a <Action>(Annotate)
+map <leader>ga <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-
 nmap <c-h> <Action>(ShowErrorDescription)
 nmap <leader>vd <Action>(ShowErrorDescription)
 inoremap <c-h> :action ParameterInfo<CR>
@@ -84,10 +83,9 @@ map <leader>i ~hi
 " Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
 vmap <leader>u d~h
 
-nnoremap <leader>0 :action GotoBookmark0<CR>
-nnoremap <leader>1 :action GotoBookmark1<CR>
-nnoremap <leader>2 :action GotoBookmark2<CR>
-nnoremap <leader>3 :action GotoBookmark3<CR>
-nnoremap <leader>4 :action GotoBookmark4<CR>
-nnoremap <leader>5 :action GotoBookmark5<CR>
-nnoremap <leader>6 :action GotoBookmark6<CR>
+map <c-e> <Action>(ShowHarpoon)<CR>
+map <leader>a <Action>(AddToHarpoon)
+nnoremap <leader>1 :action GotoHarpoon1<CR>
+nnoremap <leader>2 :action GotoHarpoon2<CR>
+nnoremap <leader>3 :action GotoHarpoon3<CR>
+nnoremap <leader>4 :action GotoHarpoon4<CR>
