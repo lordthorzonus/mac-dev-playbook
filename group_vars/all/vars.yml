@@ -22,6 +22,9 @@ homebrew_installed_packages:
   - sketchybar
   - lazygit
   - ripgrep
+  - fzf
+  - bat
+  - fd
 
 homebrew_taps:
   - homebrew/core

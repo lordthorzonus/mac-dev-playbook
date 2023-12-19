@@ -81,4 +81,9 @@ return require('packer').startup(function(use)
     })
 
     use 'jose-elias-alvarez/null-ls.nvim'
+    use 'cljoly/telescope-repo.nvim'
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 end)

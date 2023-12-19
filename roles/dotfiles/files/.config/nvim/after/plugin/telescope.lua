@@ -11,3 +11,20 @@ vim.keymap.set('n', '<leader>ps', function()
     })
 end)
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+
+require('telescope').setup {
+    extensions = {
+        repo = {
+            list = {
+                fd_opts = {
+                    "--no-ignore-vcs",
+                },
+                search_dirs = {
+                    '~/projects/',
+                }
+            }
+        }
+    }
+}
+
+require('telescope').load_extension('repo')
