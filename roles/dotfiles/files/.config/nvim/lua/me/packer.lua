@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
     use { 'catppuccin/nvim', as = 'catppuccin' }
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -82,8 +82,7 @@ return require('packer').startup(function(use)
 
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'cljoly/telescope-repo.nvim'
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+    use 'lewis6991/gitsigns.nvim'
+    use 'folke/todo-comments.nvim'
+    use 'folke/trouble.nvim'
 end)
