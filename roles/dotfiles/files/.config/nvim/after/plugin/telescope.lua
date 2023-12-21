@@ -23,8 +23,14 @@ require('telescope').setup {
                     '~/projects/',
                 }
             }
+        },
+        ['ui-select'] = {
+            require("telescope.themes").get_dropdown {
+                -- even more opts
+            }
         }
     }
 }
 
 require('telescope').load_extension('repo')
+require('telescope').load_extension('ui-select')

@@ -22,7 +22,7 @@ map <C-n> <Plug>NextWholeOccurrence
 
 """ Common settings -------------------------
 set showmode
-set so=999
+set so=30
 set incsearch
 set nu
 set rnu
@@ -65,7 +65,7 @@ nmap <c-h> <Action>(ShowErrorDescription)
 nmap <leader>vd <Action>(ShowErrorDescription)
 inoremap <c-h> :action ParameterInfo<CR>
 map <S-Space> <Action>(GotoNextError)
-map <leader>ff <Action>(SearchEverywhere)<CR>
+map <leader>ff <Action>(SearchEverywhere)
 map <leader>fo <Action>(ReformatCode)<CR>
 
 map <leader>b <Action>(ToggleLineBreakpoint)

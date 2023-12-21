@@ -42,6 +42,8 @@ return require('packer').startup(function(use)
             { 'hrsh7th/nvim-cmp' },
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-path' },
+            { 'hrsh7th/cmp-cmdline' },
+            { 'David-Kunz/cmp-npm' },
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-nvim-lua' },
@@ -85,4 +87,12 @@ return require('packer').startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'folke/todo-comments.nvim'
     use 'folke/trouble.nvim'
+    use 'folke/noice.nvim'
+    use {
+        'nvim-telescope/telescope-ui-select.nvim',
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    }
 end)
