@@ -7,6 +7,7 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
+opt.smarttab = true
 opt.autoread = true
 opt.autoindent = true
 
@@ -27,7 +28,7 @@ opt.incsearch = true
 
 opt.termguicolors = true
 
-opt.scrolloff = 8
+opt.scrolloff = 30
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 

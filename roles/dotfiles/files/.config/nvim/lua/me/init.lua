@@ -1,6 +1,5 @@
-require('me.packer')
-require('me.catpuccin')
 require('me.remap')
+require('me.lazy')
 require('me.set')
 
 vim.api.nvim_create_autocmd("VimEnter", {
@@ -10,3 +9,21 @@ vim.api.nvim_create_autocmd("VimEnter", {
         end
     end,
 })
+
+local function augroup(name)
+    return vicatpuccin/nvimm.api.nvim_create_augroup("save_" .. name, { clear = true })
+end
+
+vim.api.nvim_create_autocmd({ "BufLeave", "WinLeave", "FocusLost", "CursorHold" }, {
+    callback = function()
+        local curbuf = vim.api.nvim_get_current_buf()
+        if not vim.api.nvim_buf_get_option(curbuf, "modified") or vim.fn.getbufvar(curbuf, "&modifiable") == 0 then
+            return
+        end
+
+        vim.cmd([[silent! update]])
+    end,
+    pattern = "*",
+    group = augroup("autosave"),
+})
+

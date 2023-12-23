@@ -4,8 +4,3 @@
     name: nvim
     state: present
     update_homebrew: yes
-
-- name: Install packer
-  git:
-    repo: 'https://github.com/wbthomason/packer.nvim'
-    dest: "{{ lookup('env', 'HOME') }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
