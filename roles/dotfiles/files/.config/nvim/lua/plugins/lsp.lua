@@ -36,6 +36,9 @@ return {
 			local default_setup = function(server)
 				lspconfig[server].setup({
 					capabilities = lsp_capabilities,
+					inlay_hints = {
+						enabled = true,
+					},
 				})
 			end
 
@@ -138,7 +141,7 @@ return {
 					vim.keymap.set("n", "[d", function()
 						vim.diagnostic.goto_next()
 					end, opts)
-					vim.keymap.set("n", "<A-Enter>", function()
+					vim.keymap.set("n", "<M-Enter>", function()
 						vim.lsp.buf.code_action()
 					end, { buffer = event.buf, remap = true })
 					vim.keymap.set("n", "]d", function()

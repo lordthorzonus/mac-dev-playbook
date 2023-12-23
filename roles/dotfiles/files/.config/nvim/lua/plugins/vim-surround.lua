@@ -1,7 +1,6 @@
 return {
 	{
 		"tpope/vim-surround",
-		event = "BufEnter",
-		opts = {},
+		lazy = false,
 	},
 }

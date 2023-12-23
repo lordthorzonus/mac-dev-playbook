@@ -70,6 +70,7 @@ map <leader>fo <Action>(ReformatCode)<CR>
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
+nnoremap  <leader>tt :action ActivateTerminalToolWindow<CR>
 
 nnoremap <c-q> :action HideAllWindows<CR>
 inoremap jj <ESC>
