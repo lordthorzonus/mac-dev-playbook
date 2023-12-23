@@ -5,13 +5,13 @@ require('me.set')
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
         if vim.fn.argv(0) == "" or vim.fn.argv(0) == "." then
-            require("telescope.builtin").find_files()
+            require("telescope.builtin").git_files()
         end
     end,
 })
 
 local function augroup(name)
-    return vicatpuccin/nvimm.api.nvim_create_augroup("save_" .. name, { clear = true })
+    return vim.api.nvim_create_augroup("save_" .. name, { clear = true })
 end
 
 vim.api.nvim_create_autocmd({ "BufLeave", "WinLeave", "FocusLost", "CursorHold" }, {
@@ -26,4 +26,3 @@ vim.api.nvim_create_autocmd({ "BufLeave", "WinLeave", "FocusLost", "CursorHold" 
     pattern = "*",
     group = augroup("autosave"),
 })
-

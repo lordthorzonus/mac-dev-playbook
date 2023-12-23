@@ -2,7 +2,7 @@ return {
     {
         'jose-elias-alvarez/null-ls.nvim',
         version = false,
-        lazy = true,
+        event = "BufRead",
         config = function()
             local null_ls   = require('null-ls')
             local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
