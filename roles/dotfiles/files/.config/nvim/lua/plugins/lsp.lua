@@ -87,12 +87,49 @@ return {
 
 			local cmp = require("cmp")
 			local cmp_select = { behavior = cmp.SelectBehavior.Select }
+			local cmp_kinds = {
+				Text = "  ",
+				Method = "  ",
+				Function = "  ",
+				Constructor = "  ",
+				Field = "  ",
+				Variable = "  ",
+				Class = "  ",
+				Interface = "  ",
+				Module = "  ",
+				Property = "  ",
+				Unit = "  ",
+				Value = "  ",
+				Enum = "  ",
+				Keyword = "  ",
+				Snippet = "  ",
+				Color = "  ",
+				File = "  ",
+				Reference = "  ",
+				Folder = "  ",
+				EnumMember = "  ",
+				Constant = "  ",
+				Struct = "  ",
+				Event = "  ",
+				Operator = "  ",
+				TypeParameter = "  ",
+			}
+
 			cmp.setup({
+				window = {
+					border = "single",
+				},
 				sources = {
 					{ name = "nvim_lsp" },
 					{ name = "path" },
 					{ name = "buffer" },
 					{ name = "luasnip" },
+				},
+				formatting = {
+					format = function(_, vim_item)
+						vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind
+						return vim_item
+					end,
 				},
 				mapping = cmp.mapping.preset.insert({
 					-- Enter key confirms completion item
@@ -100,6 +137,8 @@ return {
 					["<S-Tab>"] = nil,
 					["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 					["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+					["<Up>"] = cmp.mapping.select_prev_item(cmp_select),
+					["<Down>"] = cmp.mapping.select_next_item(cmp_select),
 					["<C-y>"] = cmp.mapping.confirm({ select = true }),
 					-- Ctrl + space triggers completion menu
 					["<C-Space>"] = cmp.mapping.complete(),
@@ -150,6 +189,9 @@ return {
 					vim.keymap.set("n", "]d", function()
 						vim.diagnostic.goto_prev()
 					end, opts)
+					vim.keymap.set("n", "<C-s>", function()
+						telescope.treesitter()
+					end)
 					vim.keymap.set("n", "<leader>vca", function()
 						vim.lsp.buf.code_action()
 					end, opts)

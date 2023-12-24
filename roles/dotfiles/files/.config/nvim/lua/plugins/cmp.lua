@@ -11,6 +11,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-nvim-lsp-document-symbol",
 			"petertriho/cmp-git",
 			"windwp/nvim-autopairs",
 		},
@@ -28,21 +29,23 @@ return {
 			})
 
 			cmp.setup.filetype("json", {
-				sources = {
+				sources = cmp.config.sources({
 					{ name = "npm", priority = 100 },
-					{ name = "json" },
+				}, {
 					{ name = "buffer" },
-					{ name = "path" },
+				}, {
 					{ name = "nvim_lsp" },
-				},
+				}),
 			})
 
 			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
-				sources = {
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp_document_symbol" },
+				}, {
 					{ name = "buffer" },
-				},
+				}),
 			})
 
 			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
