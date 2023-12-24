@@ -122,12 +122,12 @@ return {
 				desc = "LSP actions",
 				callback = function(event)
 					local opts = { buffer = event.buf, remap = false }
-
+					local telescope = require("telescope.builtin")
 					vim.keymap.set("n", "gd", function()
-						vim.lsp.buf.definition()
+						telescope.lsp_definitions()
 					end, opts)
 					vim.keymap.set("n", "gD", function()
-						vim.lsp.buf.declaration()
+						telescope.lsp_declarations()
 					end, opts)
 					vim.keymap.set("n", "K", function()
 						vim.lsp.buf.hover()
@@ -151,7 +151,7 @@ return {
 						vim.lsp.buf.code_action()
 					end, opts)
 					vim.keymap.set("n", "<leader>vrr", function()
-						vim.lsp.buf.references()
+						telescope.lsp_references()
 					end, opts)
 					vim.keymap.set("n", "<leader>vrn", function()
 						vim.lsp.buf.rename()
@@ -170,7 +170,9 @@ return {
 					end, opts)
 					vim.keymap.set("n", "<leader>t", ":lua vim.lsp.buf.code_action()<CR>")
 					vim.keymap.set("n", "<leader>fo", ":lua vim.lsp.buf.formatting()<CR>")
-					vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+					vim.keymap.set("n", "gi", function()
+						telescope.lsp_implementations()
+					end, opts)
 				end,
 			})
 		end,
