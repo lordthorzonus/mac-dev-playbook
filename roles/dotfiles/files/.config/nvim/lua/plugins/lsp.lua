@@ -90,6 +90,9 @@ return {
 			cmp.setup({
 				sources = {
 					{ name = "nvim_lsp" },
+					{ name = "path" },
+					{ name = "buffer" },
+					{ name = "luasnip" },
 				},
 				mapping = cmp.mapping.preset.insert({
 					-- Enter key confirms completion item
@@ -133,7 +136,7 @@ return {
 						vim.lsp.buf.hover()
 					end, opts)
 					vim.keymap.set("n", "<leader>vws", function()
-						vim.lsp.buf.workspace_symbol()
+						telescope.lsp_workspace_symbols()
 					end, opts)
 					vim.keymap.set("n", "<leader>vd", function()
 						vim.diagnostic.open_float()
@@ -141,7 +144,7 @@ return {
 					vim.keymap.set("n", "[d", function()
 						vim.diagnostic.goto_next()
 					end, opts)
-					vim.keymap.set("n", "<M-Enter>", function()
+					vim.keymap.set("n", "<C-Enter>", function()
 						vim.lsp.buf.code_action()
 					end, { buffer = event.buf, remap = true })
 					vim.keymap.set("n", "]d", function()
@@ -162,9 +165,6 @@ return {
 					vim.keymap.set("n", "<C-h>", function()
 						vim.diagnostic.open_float()
 					end, { buffer = event.buf, remap = true })
-					vim.keymap.set("n", "<leader>vws", function()
-						vim.lsp.buf.workspace_symbol()
-					end, opts)
 					vim.keymap.set("n", "<leader>vd", function()
 						vim.diagnostic.open_float()
 					end, opts)

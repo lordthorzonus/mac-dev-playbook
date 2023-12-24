@@ -9,7 +9,9 @@ return {
 			"David-Kunz/cmp-npm",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-nvim-lua",
+			"petertriho/cmp-git",
 			"windwp/nvim-autopairs",
 		},
 		config = function()
