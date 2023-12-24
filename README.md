@@ -1,5 +1,10 @@
 # Ansible playbook for setting up a MacBook for development
 
+##  Quick links
+-  [dotfiles](roles/dotfiles/files)
+-  [NVIM](roles/dotfiles/files/.config/nvim)
+-  [homebrew](roles/homebrew/vars/main.yml)
+
 ## Installation
 
 - Install [Homebrew](https://brew.sh/)
