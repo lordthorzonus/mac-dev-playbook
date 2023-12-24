@@ -2,6 +2,7 @@
 [user]
 	name = Juuso Leinonen
 	email = leinonen.juuso@gmail.com
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDkMnIjN6Sxu7s/YXPrYan/35zK687QUptodzDBOwBGfQ2+hCy3wvf0Pe755cx9aWgCws5L/RieQdguG6KZ7hcdmxhMetOP2WO051vJjZR5uUz+n20nhymU9sGd6vzTH5RruizkCUjGcu+QmtE3ubNqmOOMFy9d3u3BXsW97d6Gu388SZMgf+GJKXQ/2okEvsGVK9ghESKJNcbALFula6CsLDINzLsEZZ9qwWZue6mv5hrexp9jPMFeKAsJm3AoSE1qW9Lew3CmolC2FZYQ2NrgmvCKeQoVflfqmuVbPgHQQXMCOTZSMKqWDQ6C8Ddu5EQtknFCAs6apn45XHm9Lo7Z
 
 [apply]
 	whitespace = warn

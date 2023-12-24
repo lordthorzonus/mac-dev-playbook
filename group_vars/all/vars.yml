@@ -47,6 +47,7 @@ homebrew_cask_apps:
   - insomnia
   - font-jetbrains-mono-nerd-font
   - font-fira-code-nerd-font
+  - wezterm
 
 homebrew_cask_accept_external_apps: true
 
@@ -63,6 +64,7 @@ dotfiles_files:
   - .config/nvim
   - .config/sketchybar
   - .tmux.conf
+  - .wezterm.lua
 
 ##############################################
 # oh-my-zsh
