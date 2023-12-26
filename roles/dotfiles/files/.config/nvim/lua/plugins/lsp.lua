@@ -261,11 +261,11 @@ return {
 				vim.cmd("Lspsaga rename")
 			end)
 
-			vim.keymap.set("n", "<leader>sic", function()
+			vim.keymap.set("n", "<leader>ic", function()
 				vim.cmd("Lspsaga incoming_calls")
 			end)
 
-			vim.keymap.set("n", "<leader>soc", function()
+			vim.keymap.set("n", "<leader>oc", function()
 				vim.cmd("Lspsaga outgoing_calls")
 			end)
 

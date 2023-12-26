@@ -1,6 +1,7 @@
 return {
 	{
 		"folke/zen-mode.nvim",
+		event = "VeryLazy",
 		config = function()
 			vim.keymap.set("n", "<leader>zz", function()
 				require("zen-mode").setup({
