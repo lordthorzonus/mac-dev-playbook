@@ -189,17 +189,11 @@ return {
 					vim.keymap.set("n", "]d", function()
 						vim.diagnostic.goto_prev()
 					end, opts)
-					vim.keymap.set("n", "<C-s>", function()
-						telescope.treesitter()
-					end)
 					vim.keymap.set("n", "<leader>vca", function()
 						vim.lsp.buf.code_action()
 					end, opts)
 					vim.keymap.set("n", "<leader>vrr", function()
 						telescope.lsp_references()
-					end, opts)
-					vim.keymap.set("n", "<leader>vrn", function()
-						vim.lsp.buf.rename()
 					end, opts)
 					vim.keymap.set("i", "<C-h>", function()
 						vim.lsp.buf.signature_help()
@@ -217,6 +211,67 @@ return {
 					end, opts)
 				end,
 			})
+		end,
+	},
+	{
+		"nvimdev/lspsaga.nvim",
+		event = "LspAttach",
+		opts = {
+			breadcrumbs = {
+				enable = false,
+			},
+			outline = {
+				layout = "float",
+				keys = {
+					jump = "e",
+					toggle_or_jump = "<cr>",
+					quit = "<esc>",
+				},
+				detail = false,
+			},
+			lightbulb = {
+				enable = false,
+				sign = false,
+				enable_in_insert = false,
+			},
+			callhierarchy = {
+				keys = {
+					quit = "<esc>",
+				},
+			},
+			symbol_in_winbar = {
+				enable = false,
+			},
+			rename = {
+				enable = true,
+				keymaps = {
+					quit = "<esc>",
+				},
+			},
+		},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function(_, opts)
+			local lspsaga = require("lspsaga")
+			lspsaga.setup(opts)
+
+			vim.keymap.set("n", "<leader>vrn", function()
+				vim.cmd("Lspsaga rename")
+			end)
+
+			vim.keymap.set("n", "<leader>sic", function()
+				vim.cmd("Lspsaga incoming_calls")
+			end)
+
+			vim.keymap.set("n", "<leader>soc", function()
+				vim.cmd("Lspsaga outgoing_calls")
+			end)
+
+			vim.keymap.set("n", "<C-s>", function()
+				vim.cmd("Lspsaga outline")
+			end)
 		end,
 	},
 }

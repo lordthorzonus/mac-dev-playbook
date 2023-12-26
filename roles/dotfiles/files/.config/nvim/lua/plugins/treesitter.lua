@@ -8,6 +8,9 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"nvim-treesitter/nvim-treesitter-context",
 		},
+		cmd = { "TSInstall", "TSUpdate", "TSInstallSync" },
+		---@type TSConfig
+		---@diagnostic disable-next-line: missing-fields
 		opts = {
 			-- A list of parser names, or "all"
 			ensure_installed = {
@@ -28,7 +31,6 @@ return {
 				"html",
 				"css",
 			},
-
 			-- Install parsers synchronously (only applied to `ensure_installed`)
 			sync_install = false,
 
