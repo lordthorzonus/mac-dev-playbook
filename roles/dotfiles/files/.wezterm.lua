@@ -2,7 +2,8 @@ local wezterm = require("wezterm")
 local config = {}
 
 config.color_scheme = "Catppuccin Mocha"
-config.font_size = 14
+config.font_size = 14.0
+config.font = wezterm.font("JetBrains Mono", { weight = "Regular" })
 config.scrollback_lines = 10000
 config.enable_scroll_bar = true
 
