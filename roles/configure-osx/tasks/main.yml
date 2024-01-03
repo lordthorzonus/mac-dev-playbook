@@ -1,5 +1,136 @@
 ---
-- name: Set zsh as default shell
-  shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
-  become: yes
+- name: Add yabai to sudoers
+  command: "{{ role_path }}/files/add-yabai-to-sudoers.sh"
+  become: true
 
+# Finder
+- name: Show hidden files in Finder
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    value: true
+    type: bool
+  notify: restart-finder
+  become: true
+
+- name: Show path bar in Finder
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    value: true
+    type: bool
+  notify: restart-finder
+  become: true
+
+- name: Show status bar in Finder
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    value: true
+    type: bool
+  notify: restart-finder
+  become: true
+
+- name: Display full POSIX path as Finder window title
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: _FXShowPosixPathInTitle
+    type: bool
+    value: true
+  notify: restart-finder
+  become: true
+
+- name: Keep folders on top when sorting by name
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: _FXSortFoldersFirst
+    type: bool
+    value: true
+  notify: restart-finder
+  become: true
+
+- name: Avoid creating .DS_Store files on network volumes
+  community.general.osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    type: bool
+    value: true
+  become: true
+
+- name: Avoid creating .DS_Store files on USB volumes
+  community.general.osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteUSBStores
+    type: bool
+    value: true
+  become: true
+
+# Dock
+- name: Disable smart quotes, dashes, autocorrect and auto-capitalization
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: "{{ item }}"
+    type: bool
+    value: false
+  with_items:
+    - NSAutomaticQuoteSubstitutionEnabled
+    - NSAutomaticDashSubstitutionEnabled
+    - NSAutomaticSpellingCorrectionEnabled
+    - NSAutomaticCapitalizationEnabled
+  become: true
+
+- name: Don't automatically rearrange Spaces based on most recent use
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mru-spaces
+    type: bool
+    value: false
+  become: true
+
+- name: Automatically hide and show the Dock
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+  become: true
+
+- name: Don't show recent applications in Dock
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    type: bool
+    value: false
+  become: true
+
+- name: Show battery percentage
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.battery
+    key: ShowPercent
+    type: bool
+    value: true
+  become: true
+
+- name: Set fast key repeat
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: KeyRepeat
+    type: int
+    value: 1 # 1Hz = 16.7ms
+  become: true
+
+- name: Set fast delay until repeat
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: int
+    value: 12 # 12Hz = 200ms
+  become: true
+
+- name: Disable press-and-hold for keys in favor of key repeat
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: ApplePressAndHoldEnabled
+    type: bool
+    value: false
+  become: true

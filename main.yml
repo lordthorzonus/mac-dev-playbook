@@ -15,3 +15,5 @@
       tags: ["git-repos"]
     - role: dotfiles
       tags: ["dotfiles"]
+    - role: configure-osx
+      tags: ["configure-osx"] 

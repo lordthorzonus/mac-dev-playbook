@@ -1,0 +1,4 @@
+---
+- name: restart-finder
+  shell: "killall Finder"
+  become: true
