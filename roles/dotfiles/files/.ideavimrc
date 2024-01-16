@@ -14,10 +14,7 @@ set NERDTree
 " Trying the new syntax
 
 """ Plugin settings -------------------------
-let g:argtextobj_pairs="[:],(:),<:>"
-
-" <C-n> seems to me as a better solution than <M-n>,
-" but we should finally support vim-visual-multi because vim-multiple-cursors is deprecated now
+let g:argtextobj_pairs="[:],(:),{:},<:>"
 map <C-n> <Plug>NextWholeOccurrence
 
 """ Common settings -------------------------
@@ -32,61 +29,68 @@ set ideajoin
 set idearefactormode=keep
 set ideamarks
 
-nmap <leader>wd :action MoveEditorToOppositeTabGroup<cr>
 
+inoremap jj <ESC>
+
+" Navigation in buffer
 nnoremap <C-i> :action Forward<cr>
 nnoremap <C-o> :action Back<cr>
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 nnoremap gi :action GotoImplementation<cr>
-
+nnoremap <c-s> :action FileStructurePopup<CR>
+map <leader>o <Action>(FileStructurePopup)
 nnoremap [m :action MethodUp<cr>
-" Next method.
 nnoremap ]m :action MethodDown<cr>
 map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>
-
-nnoremap <c-s> :action FileStructurePopup<CR>
-
-map <c-w>m :action MaximizeEditorInSplit<CR>
-
-map <leader>d <Action>(Debug)
-map <leader>t <Action>(Refactorings.QuickListPopupAction)
-nmap <leader>rr :action RenameElement<cr>
-nmap <leader>r :action Run<cr>
-map <leader>c <Action>(Stop)
-map <leader>z <Action>(ToggleDistractionFreeMode)
-
 nmap <leader>e <Action>(RecentLocations)
 map <leader>s <Action>(SelectInProjectView)
+map <S-Space> <Action>(GotoNextError)
+
+" Editor windows
+map <c-w>m :action MaximizeEditorInSplit<CR>
+map <leader>z <Action>(ToggleDistractionFreeMode)
+nnoremap <c-q> :action HideAllWindows<CR>
+nnoremap  <leader>tt :action ActivateTerminalToolWindow<CR>
+nmap <leader>wd :action MoveEditorToOppositeTabGroup<cr>
+
+" Tests
+map <leader>d <Action>(Debug)
+nmap <leader>r :action Run<cr>
+map <leader>c <Action>(Stop)
+map <leader>b <Action>(ToggleLineBreakpoint)
+
+" git
 map <leader>ga <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>gs <Action>(Git.Menu)
+map <leader>hd <Action>(Vcs.ShowDiffPreview)
+
+" Fuzzy find
+map <leader>ff <Action>(SearchEverywhere)
+
+
+" Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
+"map <leader>i ~hi
+" Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
+"vmap <leader>u d~h
+
+" LSP info
 nmap <c-h> <Action>(ShowErrorDescription)
 nmap <leader>vd <Action>(ShowErrorDescription)
 inoremap <c-h> :action ParameterInfo<CR>
-map <S-Space> <Action>(GotoNextError)
-map <leader>ff <Action>(SearchEverywhere)
-map <leader>fo <Action>(ReformatCode)<CR>
 
-map <leader>b <Action>(ToggleLineBreakpoint)
-map <leader>o <Action>(FileStructurePopup)
-nnoremap  <leader>tt :action ActivateTerminalToolWindow<CR>
-
-nnoremap <c-q> :action HideAllWindows<CR>
-inoremap jj <ESC>
-
-map <leader>cc :action StringManipulation.ToCamelCase<CR>
-map ,cc :action StringManipulation.ToPascalCase<CR>
-map .cc :action StringManipulation.ToSnakeCase<CR>
-map ,cu :action StringManipulation.ToUpperCase<CR>
-" Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
-map <leader>i ~hi
-" Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
-vmap <leader>u d~h
-
+" Harpoon
 map <c-e> <Action>(ShowHarpoon)<CR>
 map <leader>a <Action>(AddToHarpoon)
 nnoremap <leader>1 :action GotoHarpoon1<CR>
 nnoremap <leader>2 :action GotoHarpoon2<CR>
 nnoremap <leader>3 :action GotoHarpoon3<CR>
 nnoremap <leader>4 :action GotoHarpoon4<CR>
+
+" Refactoring
+nnoremap <leader>vrn :action RenameElement<cr>
+map <leader>t <Action>(Refactorings.QuickListPopupAction)
+map <leader>vca <Action>(Refactorings.QuickListPopupAction)
+map <leader>fo <Action>(ReformatCode)<CR>
