@@ -270,10 +270,6 @@ return {
 			vim.keymap.set("n", "<leader>vrn", function()
 				vim.cmd("Lspsaga rename")
 			end)
-
-			vim.keymap.set("n", "<C-s>", function()
-				vim.cmd("Lspsaga outline")
-			end)
 		end,
 	},
 }

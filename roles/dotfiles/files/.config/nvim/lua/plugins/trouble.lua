@@ -1,7 +1,7 @@
 return {
 	{
 		"folke/trouble.nvim",
-        event = "VeryLazy",
+		event = "VeryLazy",
 		config = function()
 			require("trouble").setup()
 
