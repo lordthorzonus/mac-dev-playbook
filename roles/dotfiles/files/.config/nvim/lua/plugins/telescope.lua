@@ -21,6 +21,7 @@ return {
 			{
 				"stevearc/aerial.nvim",
 			},
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 		},
 		config = function()
 			local builtin = require("telescope.builtin")
@@ -35,6 +36,9 @@ return {
 			local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
 
 			table.insert(vimgrep_arguments, "--hidden")
+			table.insert(vimgrep_arguments, "--smart-case")
+			table.insert(vimgrep_arguments, "--line-number")
+
 			table.insert(vimgrep_arguments, "--glob")
 			table.insert(vimgrep_arguments, "!**/.git/*")
 
@@ -44,7 +48,32 @@ return {
 				},
 				pickers = {
 					find_files = {
-						find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+						find_command = {
+							"rg",
+							"--files",
+							"--hidden",
+							"--line-number",
+							"--smart-case",
+							"--glob",
+							"!**/.git/*",
+						},
+					},
+					lsp_references = {
+						initial_mode = "normal",
+					},
+
+					lsp_document_symbols = {
+						initial_mode = "normal",
+					},
+
+					lsp_definitions = {
+						theme = "dropdown",
+						initial_mode = "normal",
+					},
+
+					git_branches = {
+						initial_mode = "normal",
+						previewer = false,
 					},
 				},
 				extensions = {
@@ -57,12 +86,20 @@ return {
 						hijack_netrw = true,
 					},
 					aerial = {},
+					fzf = {
+						fuzzy = true, -- false will only do exact matching
+						override_generic_sorter = true, -- override the generic sorter
+						override_file_sorter = true, -- override the file sorter
+						case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+					},
 				},
 			})
 
 			require("telescope").load_extension("ui-select")
 			require("telescope").load_extension("undo")
 			require("telescope").load_extension("aerial")
+			require("telescope").load_extension("fzf")
+
 			-- require("telescope").load_extension("file_browser")
 
 			-- vim.api.nvim_set_keymap(
@@ -73,6 +110,7 @@ return {
 			-- )
 			vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
 			vim.keymap.set("n", "<leader>pa", "<cmd>Telescope aerial<cr>")
+			vim.keymap.set("n", "<leader>fb", "<cmd>Telescope git_branches<cr>")
 		end,
 	},
 }

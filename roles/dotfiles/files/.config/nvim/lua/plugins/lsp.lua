@@ -131,6 +131,9 @@ return {
 						return vim_item
 					end,
 				},
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
 				mapping = cmp.mapping.preset.insert({
 					-- Enter key confirms completion item
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -149,6 +152,7 @@ return {
 					end,
 				},
 			})
+
 			vim.diagnostic.config({
 				virtual_text = true,
 				signs = true,
