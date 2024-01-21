@@ -44,7 +44,7 @@ nnoremap [m :action MethodUp<cr>
 nnoremap ]m :action MethodDown<cr>
 map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>
-nmap <leader>e <Action>(RecentLocations)
+nmap <leader>e <Action>(RecentFiles)
 map <leader>s <Action>(SelectInProjectView)
 map <S-Space> <Action>(GotoNextError)
 

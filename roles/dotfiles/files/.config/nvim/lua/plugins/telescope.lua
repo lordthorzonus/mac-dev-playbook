@@ -4,7 +4,14 @@ local function initialize_keymaps()
 	vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 	vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
 	vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
-	vim.keymap.set("n", "<leader>e", builtin.oldfiles, {})
+	vim.keymap.set("n", "<leader>e", function()
+		builtin.buffers({
+			sort_lastused = true,
+			ignore_current_buffer = true,
+			sort_mru = true,
+			sort_order = "descending",
+		})
+	end, {})
 	vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
 	vim.keymap.set("n", "<leader>pa", "<cmd>Telescope aerial<cr>")
 	vim.keymap.set("n", "<leader>fb", "<cmd>Telescope git_branches<cr>")
@@ -45,7 +52,6 @@ return {
 			table.insert(vimgrep_arguments, "--hidden")
 			table.insert(vimgrep_arguments, "--smart-case")
 			table.insert(vimgrep_arguments, "--line-number")
-
 			table.insert(vimgrep_arguments, "--glob")
 			table.insert(vimgrep_arguments, "!**/.git/*")
 
@@ -67,14 +73,17 @@ return {
 					},
 					lsp_references = {
 						initial_mode = "normal",
+						show_line = false,
 					},
 
 					lsp_document_symbols = {
 						initial_mode = "normal",
+						show_line = false,
 					},
 
 					lsp_definitions = {
 						initial_mode = "normal",
+						show_line = false,
 					},
 
 					git_branches = {
