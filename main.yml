@@ -16,4 +16,4 @@
     - role: dotfiles
       tags: ["dotfiles"]
     - role: configure-osx
-      tags: ["configure-osx"] 
+      tags: ["configure-osx"]

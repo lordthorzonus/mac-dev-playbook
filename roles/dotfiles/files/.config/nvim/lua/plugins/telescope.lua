@@ -1,3 +1,15 @@
+local function initialize_keymaps()
+	local builtin = require("telescope.builtin")
+	vim.keymap.set("n", "<leader>pf", builtin.git_files, {})
+	vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+	vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
+	vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
+	vim.keymap.set("n", "<leader>e", builtin.oldfiles, {})
+	vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+	vim.keymap.set("n", "<leader>pa", "<cmd>Telescope aerial<cr>")
+	vim.keymap.set("n", "<leader>fb", "<cmd>Telescope git_branches<cr>")
+end
+
 return {
 	{
 		"nvim-telescope/telescope.nvim",
@@ -24,13 +36,8 @@ return {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 		},
 		config = function()
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>pf", builtin.git_files, {})
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-			vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
-			vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
-
 			local telescopeConfig = require("telescope.config")
+			initialize_keymaps()
 			--
 			-- Clone the default Telescope configuration
 			local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -67,7 +74,6 @@ return {
 					},
 
 					lsp_definitions = {
-						theme = "dropdown",
 						initial_mode = "normal",
 					},
 
@@ -108,9 +114,6 @@ return {
 			-- 	":Telescope file_browser path=%:p:h select_buffer=true<CR>",
 			-- 	{ noremap = true }
 			-- )
-			vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
-			vim.keymap.set("n", "<leader>pa", "<cmd>Telescope aerial<cr>")
-			vim.keymap.set("n", "<leader>fb", "<cmd>Telescope git_branches<cr>")
 		end,
 	},
 }

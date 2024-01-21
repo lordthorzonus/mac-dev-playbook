@@ -56,7 +56,9 @@ nnoremap  <leader>tt :action ActivateTerminalToolWindow<CR>
 nmap <leader>wd :action MoveEditorToOppositeTabGroup<cr>
 
 " Tests
-map <leader>d <Action>(Debug)
+map <leader>td <Action>(Debug)
+map <leader>dr <Action>(Resume)
+map <leader>tn <Action>(RunClass)
 nmap <leader>r :action Run<cr>
 map <leader>c <Action>(Stop)
 map <leader>b <Action>(ToggleLineBreakpoint)
@@ -91,6 +93,6 @@ nnoremap <leader>4 :action GotoHarpoon4<CR>
 
 " Refactoring
 nnoremap <leader>vrn :action RenameElement<cr>
-map <leader>t <Action>(Refactorings.QuickListPopupAction)
+map <leader>ca <Action>(Refactorings.QuickListPopupAction)
 map <leader>vca <Action>(Refactorings.QuickListPopupAction)
 map <leader>fo <Action>(ReformatCode)<CR>
