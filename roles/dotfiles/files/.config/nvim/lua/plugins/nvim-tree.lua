@@ -80,10 +80,6 @@ return {
 			})
 
 			vim.keymap.set("n", "<leader>s", function()
-				if zen_mode_view.is_open() then
-					zen_mode.close()
-				end
-
 				vim.cmd(":NvimTreeFindFileToggle!<CR>")
 			end, { silent = true })
 		end,

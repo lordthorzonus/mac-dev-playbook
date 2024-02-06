@@ -50,6 +50,8 @@ return {
 					"rust_analyzer",
 					"ansiblels",
 					"lua_ls",
+					"gopls",
+					"gofumpt",
 					"spectral",
 					"dockerls",
 					"docker_compose_language_service",
@@ -79,6 +81,21 @@ return {
 										vim.env.VIMRUNTIME,
 									},
 								},
+							},
+						},
+					}),
+					gopls = require("lspconfig").gopls.setup({
+						capabilities = lsp_capabilities,
+						settings = {
+							gopls = {
+								analyses = {
+									unusedparams = true,
+									shadow = true,
+								},
+								completeUnimported = true,
+								usePlaceholders = true,
+								staticcheck = true,
+								gofumpt = true,
 							},
 						},
 					}),
@@ -187,13 +204,13 @@ return {
 					vim.keymap.set("n", "[d", function()
 						vim.diagnostic.goto_next()
 					end, opts)
-					vim.keymap.set("n", "<C-Enter>", function()
+					vim.keymap.set({ "n", "v" }, "<C-Enter>", function()
 						vim.lsp.buf.code_action()
 					end, { buffer = event.buf, remap = true })
 					vim.keymap.set("n", "]d", function()
 						vim.diagnostic.goto_prev()
 					end, opts)
-					vim.keymap.set("n", "<leader>ca", function()
+					vim.keymap.set({ "n", "v" }, "<leader>ca", function()
 						vim.lsp.buf.code_action()
 					end, opts)
 					vim.keymap.set("n", "<leader>vrr", function()
@@ -222,6 +239,10 @@ return {
 					vim.keymap.set("n", "<leader>oc", function()
 						telescope.lsp_outgoing_calls()
 					end)
+
+					vim.keymap.set("n", "<leader>vrn", function()
+						vim.lsp.buf.rename()
+					end)
 				end,
 			})
 		end,
@@ -229,6 +250,7 @@ return {
 	{
 		"nvimdev/lspsaga.nvim",
 		event = "LspAttach",
+		enable = false,
 		opts = {
 			breadcrumbs = {
 				enable = false,

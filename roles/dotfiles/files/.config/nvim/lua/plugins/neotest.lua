@@ -18,8 +18,6 @@ local function open_as_float(win_id)
 		style = "minimal",
 		border = "single",
 	})
-
-	vim.api.nvim_set_current_win(win_id)
 end
 
 local function initialize_keymaps()
@@ -47,7 +45,7 @@ local function initialize_keymaps()
 		require("neotest").summary.toggle()
 		local win = vim.fn.bufwinid("Neotest Summary")
 		if win > -1 then
-			open_as_float(win)
+			vim.api.nvim_set_current_win(win)
 		end
 	end, { desc = "Open Test Summary" })
 end
