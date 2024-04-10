@@ -51,7 +51,6 @@ return {
 					"ansiblels",
 					"lua_ls",
 					"gopls",
-					"gofumpt",
 					"spectral",
 					"dockerls",
 					"docker_compose_language_service",

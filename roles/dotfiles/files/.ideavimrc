@@ -46,7 +46,8 @@ map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>
 nmap <leader>e <Action>(RecentFiles)
 map <leader>s <Action>(SelectInProjectView)
-map <S-Space> <Action>(GotoNextError)
+nmap <C-k> <Action>(GotoNextError)
+nmap <C-j> <Action>(GotoPreviousError)
 
 " Editor windows
 map <c-w>m :action MaximizeEditorInSplit<CR>
@@ -96,3 +97,7 @@ nnoremap <leader>vrn :action RenameElement<cr>
 map <leader>ca <Action>(Refactorings.QuickListPopupAction)
 map <leader>vca <Action>(Refactorings.QuickListPopupAction)
 map <leader>fo <Action>(ReformatCode)<CR>
+
+" Visual mode
+vmap J <Action>(MoveLineDown)
+vmap K <Action>(MoveLineUp)
