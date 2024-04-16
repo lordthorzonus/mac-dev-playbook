@@ -39,6 +39,13 @@ return {
 			require("nvim-tree").setup({
 				sort_by = "case_sensitive",
 				on_attach = my_on_attach,
+				hijack_netrw = true,
+				hijack_cursor = true,
+				hijack_unnamed_buffer_when_opening = false,
+				update_focused_file = {
+					enable = true,
+					update_root = false,
+				},
 				view = {
 					float = {
 						enable = true,
@@ -72,6 +79,7 @@ return {
 				actions = {
 					open_file = {
 						quit_on_open = true,
+						resize_window = true,
 					},
 				},
 				filters = {

@@ -1,12 +1,15 @@
 return {
 	{
-		"folke/zen-mode.nvim",
+		"Subjective/zen-mode.nvim",
 		config = function()
 			require("zen-mode").setup({
-				window = {
-					zindex = 20,
-					width = 120,
-					options = {},
+                window = {
+                    zindex = 20,
+                    width = 120,
+                    options = {},
+                },
+                plugins = {
+					tmux = { enabled = true },
 				},
 			})
 

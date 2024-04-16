@@ -14,8 +14,6 @@ homebrew_installed_packages:
   - openssl
   - wget
   - thefuck
-  - yabai
-  - skhd
   - kubernetes-cli
   - zsh
   - tmux
@@ -24,13 +22,14 @@ homebrew_installed_packages:
   - ripgrep
   - fzf
   - bat
+  - aerospace
   - fd
 
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
+  - nikitabobko/tap
   - homebrew/cask-fonts
-  - koekeishiya/formulae
   - FelixKratz/formulae
 
 homebrew_cask_appdir: /Applications
@@ -63,6 +62,8 @@ dotfiles_files:
   - .config/yabai/yabairc
   - .config/nvim
   - .config/sketchybar
+  - .config/aerospace/aerospace.toml
+  - .config/alacritty/alacritty.toml
   - .tmux.conf
   - .wezterm.lua
 
