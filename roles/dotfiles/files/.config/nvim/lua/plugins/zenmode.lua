@@ -3,13 +3,10 @@ return {
 		"Subjective/zen-mode.nvim",
 		config = function()
 			require("zen-mode").setup({
-                window = {
-                    zindex = 20,
-                    width = 120,
-                    options = {},
-                },
-                plugins = {
-					tmux = { enabled = true },
+				window = {
+					zindex = 20,
+					width = 120,
+					options = {},
 				},
 			})
 

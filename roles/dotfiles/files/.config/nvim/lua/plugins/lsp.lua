@@ -65,6 +65,22 @@ return {
 				},
 				handlers = {
 					default_setup,
+					tsserver = require("lspconfig").tsserver.setup({
+						capabilities = lsp_capabilities,
+						settings = {
+							typescript = {
+								inlayHints = {
+									includeInlayEnumMemberValueHints = true,
+									includeInlayFunctionLikeReturnTypeHints = true,
+									includeInlayFunctionParameterTypeHints = true,
+									includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+									includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+									includeInlayPropertyDeclarationTypeHints = true,
+									includeInlayVariableTypeHints = false,
+								},
+							},
+						},
+					}),
 					lua_ls = require("lspconfig").lua_ls.setup({
 						capabilities = lsp_capabilities,
 						settings = {
@@ -87,7 +103,17 @@ return {
 						capabilities = lsp_capabilities,
 						settings = {
 							gopls = {
+								hints = {
+									assignVariableTypes = true,
+									compositeLiteralFields = true,
+									compositeLiteralTypes = true,
+									constantValues = true,
+									functionTypeParameters = true,
+									parameterNames = true,
+									rangeVariableTypes = true,
+								},
 								analyses = {
+
 									unusedparams = true,
 									shadow = true,
 								},
