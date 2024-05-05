@@ -21,18 +21,20 @@ exec-on-workspace-change = ['/bin/bash', '-c',
     '/opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
+[gaps]
+inner.horizontal = 24
+
 [mode.main.binding]
-alt-j = 'focus left'
-alt-k = 'focus down'
-alt-l = 'focus up'
-alt-semicolon = 'focus right'
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
 
 alt-shift-j = 'move left'
 alt-shift-k = 'move down'
 alt-shift-l = 'move up'
 alt-shift-semicolon = 'move right'
 
-alt-h = 'split horizontal'
 alt-v = 'split vertical'
 
 alt-f = 'fullscreen'
@@ -118,6 +120,9 @@ run = 'move-node-to-workspace 3'
 if.app-id = 'org.alacritty'
 run = 'move-node-to-workspace 4'
 
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+run = 'layout tiling'
 
 # windows that should float
 [[on-window-detected]]

@@ -7,9 +7,6 @@ return {
 		},
 		enabled = true,
 		config = function()
-			local zen_mode = require("zen-mode")
-			local zen_mode_view = require("zen-mode.view")
-			--
 			-- disable netrw at the very start of your init.lua
 			vim.g.loaded_netrw = 1
 			vim.g.loaded_netrwPlugin = 1

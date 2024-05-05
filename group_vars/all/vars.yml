@@ -58,8 +58,6 @@ dotfiles_files:
   - .zshrc
   - .gitignore
   - .ideavimrc
-  - .config/skhd/skhdrc
-  - .config/yabai/yabairc
   - .config/nvim
   - .config/sketchybar
   - .config/aerospace/aerospace.toml
@@ -91,6 +89,9 @@ git_repos_to_clone:
   - repo: "https://github.com/tmux-plugins/tpm"
     dest: "{{home_dir}}/.tmux/plugins/tpm"
     version: master
+  - repo: "https://github.com/catppuccin/alacritty"
+    dest: "{{home_dir}}/.config/alacritty/catppuccin"
+    version: main
   - repo: "git@github.com:lordthorzonus/ble2mqtt-gateway"
     dest: "{{home_dir}}/projects/personal/ble2mqtt-gateway"
     version: main

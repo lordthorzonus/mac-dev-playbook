@@ -1,0 +1,11 @@
+snippet ifer "if error not nil, return err"
+	if err != nil {
+		return ${1:err}
+	}
+	${0}
+
+snippet fum "method"
+	func (${1:receiver} ${2:type}) ${3:funcName}(${4}) ${5:error} {
+		${6}
+	}
+	${0}
