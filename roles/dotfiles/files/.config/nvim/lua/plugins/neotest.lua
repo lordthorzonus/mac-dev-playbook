@@ -58,31 +58,39 @@ return {
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"haydenmeade/neotest-jest",
+			{ "nvim-neotest/neotest-jest", commit = "24569db3f56c6f39868963a0662b82ac498023a1" },
 			"marilari88/neotest-vitest",
 			"https://github.com/rouge8/neotest-rust",
+			"nvim-neotest/neotest-go",
 		},
 		config = function()
 			initialize_keymaps()
+
+			local neotest_ns = vim.api.nvim_create_namespace("neotest")
+			vim.diagnostic.config({
+				virtual_text = {
+					format = function(diagnostic)
+						local message =
+							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+						return message
+					end,
+				},
+			}, neotest_ns)
 
 			require("neotest").setup({
 				summary = {
 					open = "topleft vertical 40sp [NeotestSummary]botright float 60% [NeotestSummary]",
 				},
 				adapters = {
+					require("neotest-go"),
 					require("neotest-jest")({
-						jestCommand = "npm test --",
-						-- jestConfigFile = "jest.config.ts",
+						jestCommand = "./node_modules/.bin/jest",
+						jestConfigFile = "jest.config.ts",
 						env = { CI = true },
-						cwd = function()
-							local file = vim.fn.expand("%:p")
-							if string.find(file, "/packages/") then
-								return string.match(file, "(.-/[^/]+/)src")
-							end
+						cwd = function(path)
 							return vim.fn.getcwd()
 						end,
 					}),
-					require("neotest-vitest"),
 				},
 			})
 		end,

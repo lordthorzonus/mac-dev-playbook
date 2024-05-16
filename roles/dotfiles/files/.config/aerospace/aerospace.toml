@@ -22,7 +22,7 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 ]
 
 [gaps]
-inner.horizontal = 24
+outer.top = 24
 
 [mode.main.binding]
 alt-h = 'focus left'
