@@ -31,14 +31,13 @@ return {
 			require("neodev").setup({})
 
 			local lspconfig = require("lspconfig")
-			local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+			lsp_capabilities =
+				vim.tbl_deep_extend("force", lsp_capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			local default_setup = function(server)
 				lspconfig[server].setup({
 					capabilities = lsp_capabilities,
-					inlay_hints = {
-						enabled = true,
-					},
 				})
 			end
 
@@ -65,65 +64,85 @@ return {
 				},
 				handlers = {
 					default_setup,
-					tsserver = require("lspconfig").tsserver.setup({
-						capabilities = lsp_capabilities,
-						settings = {
-							typescript = {
-								inlayHints = {
-									includeInlayEnumMemberValueHints = true,
-									includeInlayFunctionLikeReturnTypeHints = true,
-									includeInlayFunctionParameterTypeHints = true,
-									includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-									includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-									includeInlayPropertyDeclarationTypeHints = true,
-									includeInlayVariableTypeHints = false,
-								},
-							},
-						},
-					}),
-					lua_ls = require("lspconfig").lua_ls.setup({
-						capabilities = lsp_capabilities,
-						settings = {
-							Lua = {
-								runtime = {
-									version = "LuaJIT",
-								},
-								diagnostics = {
-									globals = { "vim" },
-								},
-								workspace = {
-									library = {
-										vim.env.VIMRUNTIME,
-									},
-								},
-							},
-						},
-					}),
-					gopls = require("lspconfig").gopls.setup({
-						capabilities = lsp_capabilities,
-						settings = {
-							gopls = {
-								hints = {
-									assignVariableTypes = true,
-									compositeLiteralFields = true,
-									compositeLiteralTypes = true,
-									constantValues = true,
-									functionTypeParameters = true,
-									parameterNames = true,
-									rangeVariableTypes = true,
-								},
-								analyses = {
+				},
+			})
 
-									unusedparams = true,
-									shadow = true,
-								},
-								completeUnimported = true,
-								usePlaceholders = true,
-								staticcheck = true,
-								gofumpt = true,
+			lspconfig.lua_ls.setup({
+				capabilities = lsp_capabilities,
+				settings = {
+					Lua = {
+						hint = {
+							enable = true,
+							arrayIndex = "Disable",
+						},
+						runtime = {
+							version = "LuaJIT",
+						},
+						diagnostics = {
+							globals = { "vim" },
+						},
+						workspace = {
+							library = {
+								vim.env.VIMRUNTIME,
 							},
 						},
-					}),
+					},
+				},
+			})
+
+			lspconfig.tsserver.setup({
+				capabilities = lsp_capabilities,
+				settings = {
+					typescript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+							includeInlayFunctionParameterTypeHints = false,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = false,
+							includeInlayEnumMemberValueHints = true,
+						},
+					},
+					javascript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = false,
+							includeInlayEnumMemberValueHints = true,
+						},
+					},
+				},
+			})
+
+			lspconfig.gopls.setup({
+				capabilities = lsp_capabilities,
+				settings = {
+					gopls = {
+						hints = {
+							assignVariableTypes = true,
+							compositeLiteralFields = true,
+							compositeLiteralTypes = true,
+							constantValues = true,
+							functionTypeParameters = true,
+							parameterNames = true,
+							rangeVariableTypes = true,
+						},
+						analyses = {
+
+							unusedparams = true,
+							shadow = true,
+						},
+						completeUnimported = true,
+						usePlaceholders = true,
+						staticcheck = true,
+						gofumpt = true,
+					},
 				},
 			})
 
@@ -165,9 +184,9 @@ return {
 				},
 				sources = {
 					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
 					{ name = "path" },
 					{ name = "buffer" },
-					{ name = "luasnip" },
 				},
 				formatting = {
 					format = function(_, vim_item)
@@ -226,8 +245,11 @@ return {
 			})
 
 			vim.diagnostic.config({
-				virtual_text = true,
 				signs = true,
+				virtual_text = {
+					source = "if_many",
+				},
+				severity_sort = true,
 				underline = true,
 				update_in_insert = true,
 				float = {
@@ -349,6 +371,21 @@ return {
 
 			vim.keymap.set("n", "<leader>vrn", function()
 				vim.cmd("Lspsaga rename")
+			end)
+		end,
+	},
+	{
+		"MysticalDevil/inlay-hints.nvim",
+		event = "LspAttach",
+		dependencies = { "neovim/nvim-lspconfig" },
+		config = function()
+			require("inlay-hints").setup({
+				commands = { enable = true }, -- Enable InlayHints commands, include `InlayHintsToggle`, `InlayHintsEnable` and `InlayHintsDisable`
+				autocmd = { enable = false }, -- Enable the inlay hints on `LspAttach` event
+			})
+
+			vim.keymap.set("n", "<leader>th", function()
+				vim.cmd("InlayHintsToggle")
 			end)
 		end,
 	},

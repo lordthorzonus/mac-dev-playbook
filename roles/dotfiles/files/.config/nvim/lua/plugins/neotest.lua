@@ -25,10 +25,6 @@ local function initialize_keymaps()
 		require("neotest").run.run_last()
 	end, { desc = "Run Last Test" })
 
-	vim.keymap.set("n", "<leader>tw", function()
-		require("neotest").run.run({ jestCommand = "jest --watch " })
-	end, { desc = "Run Watch" })
-
 	vim.keymap.set("n", "<leader>td", function()
 		require("neotest").run.run_last({ strategy = "dap" })
 	end, { desc = "Debug Last Test" })
@@ -48,6 +44,14 @@ local function initialize_keymaps()
 			vim.api.nvim_set_current_win(win)
 		end
 	end, { desc = "Open Test Summary" })
+
+	vim.keymap.set("n", "<leader>to", function()
+		require("neotest").output.open({ enter = true, auto_close = true })
+	end, { desc = "Show Output" })
+
+	vim.keymap.set("n", "<leader>tO", function()
+		require("neotest").output_panel.toggle()
+	end, { desc = "Toggle Output Panel" })
 end
 
 return {
@@ -58,7 +62,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			{ "nvim-neotest/neotest-jest", commit = "24569db3f56c6f39868963a0662b82ac498023a1" },
+			{ "nvim-neotest/neotest-jest" },
 			"marilari88/neotest-vitest",
 			"https://github.com/rouge8/neotest-rust",
 			"nvim-neotest/neotest-go",

@@ -1,8 +1,26 @@
 return {
 	{
 		"folke/noice.nvim",
-		version = false,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			{
+				"rcarriga/nvim-notify",
+				opts = {
+					on_open = function(win)
+						vim.api.nvim_win_set_config(win, { focusable = false })
+					end,
+				},
+			},
+		},
 		opts = {
+			routes = {
+				{
+					filter = {
+						event = "notify",
+					},
+					opts = {},
+				},
+			},
 			lsp = {
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {
@@ -14,6 +32,7 @@ return {
 					silent = true,
 				},
 			},
+
 			-- you can enable a preset for easier configuration
 			presets = {
 				bottom_search = true, -- use a classic bottom cmdline for search
