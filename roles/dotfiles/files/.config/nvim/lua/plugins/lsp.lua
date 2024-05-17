@@ -1,3 +1,26 @@
+-- Workaround for truncating long TypeScript inlay hints.
+-- TODO: Remove this if https://github.com/neovim/neovim/issues/27240 gets addressed.
+local methods = vim.lsp.protocol.Methods
+local inlay_hint_handler = vim.lsp.handlers[methods.textDocument_inlayHint]
+local max_inlay_hint_length = 30
+vim.lsp.handlers[methods.textDocument_inlayHint] = function(err, result, ctx, config)
+	local client = vim.lsp.get_client_by_id(ctx.client_id)
+	if client and client.name == "typescript-tools" then
+		result = vim.iter(result)
+			:map(function(hint)
+				local label = hint.label ---@type string
+				if label:len() >= max_inlay_hint_length then
+					label = label:sub(1, max_inlay_hint_length - 1) .. "..."
+				end
+				hint.label = label
+				return hint
+			end)
+			:totable()
+	end
+
+	inlay_hint_handler(err, result, ctx, config)
+end
+
 return {
 	{
 		"neovim/nvim-lspconfig",
@@ -44,7 +67,7 @@ return {
 			require("mason").setup({})
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"tsserver",
+					-- "tsserver",
 					"eslint",
 					"rust_analyzer",
 					"ansiblels",
@@ -90,35 +113,35 @@ return {
 				},
 			})
 
-			lspconfig.tsserver.setup({
-				capabilities = lsp_capabilities,
-				settings = {
-					typescript = {
-						inlayHints = {
-							includeInlayParameterNameHints = "all",
-							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-							includeInlayFunctionParameterTypeHints = false,
-							includeInlayVariableTypeHints = true,
-							includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayFunctionLikeReturnTypeHints = false,
-							includeInlayEnumMemberValueHints = true,
-						},
-					},
-					javascript = {
-						inlayHints = {
-							includeInlayParameterNameHints = "all",
-							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayVariableTypeHints = true,
-							includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayFunctionLikeReturnTypeHints = false,
-							includeInlayEnumMemberValueHints = true,
-						},
-					},
-				},
-			})
+			-- lspconfig.tsserver.setup({
+			-- 	capabilities = lsp_capabilities,
+			-- 	settings = {
+			-- 		typescript = {
+			-- 			inlayHints = {
+			-- 				includeInlayParameterNameHints = "all",
+			-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+			-- 				includeInlayFunctionParameterTypeHints = false,
+			-- 				includeInlayVariableTypeHints = true,
+			-- 				includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+			-- 				includeInlayPropertyDeclarationTypeHints = true,
+			-- 				includeInlayFunctionLikeReturnTypeHints = true,
+			-- 				includeInlayEnumMemberValueHints = true,
+			-- 			},
+			-- 		},
+			-- 		javascript = {
+			-- 			inlayHints = {
+			-- 				includeInlayParameterNameHints = "all",
+			-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+			-- 				includeInlayFunctionParameterTypeHints = true,
+			-- 				includeInlayVariableTypeHints = true,
+			-- 				includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+			-- 				includeInlayPropertyDeclarationTypeHints = true,
+			-- 				includeInlayFunctionLikeReturnTypeHints = true,
+			-- 				includeInlayEnumMemberValueHints = true,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
 
 			lspconfig.gopls.setup({
 				capabilities = lsp_capabilities,
@@ -388,5 +411,23 @@ return {
 				vim.cmd("InlayHintsToggle")
 			end)
 		end,
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {
+			settings = {
+				tsserver_file_preferences = {
+					includeInlayParameterNameHints = "all",
+					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+					includeInlayFunctionParameterTypeHints = false,
+					includeInlayVariableTypeHints = true,
+					includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayEnumMemberValueHints = true,
+				},
+			},
+		},
 	},
 }
