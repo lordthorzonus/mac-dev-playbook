@@ -4,7 +4,7 @@ return {
 		version = false,
 		opts = {
 			on_attach = function(bufnr)
-				local gs = package.loaded.gitsigns
+				local gs = require("gitsigns")
 
 				local function map(mode, l, r, opts)
 					opts = opts or {}

@@ -5,9 +5,10 @@ return {
 			main = "ibl",
 			--- @type ibl.config
 			opts = {
-				indent = {},
 				scope = {
-					enabled = false,
+					enabled = true,
+					show_start = false,
+					show_exact_scope = true,
 				},
 			},
 		},
