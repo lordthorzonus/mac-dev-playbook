@@ -157,12 +157,11 @@ return {
 							rangeVariableTypes = true,
 						},
 						analyses = {
-
 							unusedparams = true,
 							shadow = true,
 						},
 						completeUnimported = true,
-						usePlaceholders = true,
+						usePlaceholders = false,
 						staticcheck = true,
 						gofumpt = true,
 					},

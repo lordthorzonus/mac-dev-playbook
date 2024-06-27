@@ -87,6 +87,7 @@ return {
 				},
 				adapters = {
 					require("neotest-go"),
+					require("neotest-rust"),
 					require("neotest-jest")({
 						jestCommand = "./node_modules/.bin/jest",
 						jestConfigFile = "jest.config.ts",

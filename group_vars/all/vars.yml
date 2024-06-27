@@ -26,8 +26,6 @@ homebrew_installed_packages:
   - fd
 
 homebrew_taps:
-  - homebrew/core
-  - homebrew/cask
   - nikitabobko/tap
   - homebrew/cask-fonts
   - FelixKratz/formulae
