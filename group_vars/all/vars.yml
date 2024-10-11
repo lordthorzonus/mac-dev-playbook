@@ -23,6 +23,11 @@ homebrew_installed_packages:
   - fzf
   - bat
   - fd
+  - fish
+  - starship
+  - zoxide
+  - fzf
+  - nodenv
 
 homebrew_taps:
   - nikitabobko/tap
@@ -35,14 +40,13 @@ homebrew_cask_apps:
   - dropbox
   - google-chrome
   - slack
-  - iterm2
   - jetbrains-toolbox
   - raycast
   - obsidian
   - insomnia
   - font-jetbrains-mono-nerd-font
   - font-fira-code-nerd-font
-  - wezterm
+  - alacritty
   - aerospace
 
 homebrew_cask_accept_external_apps: true
@@ -59,8 +63,8 @@ dotfiles_files:
   - .config/sketchybar
   - .config/aerospace/aerospace.toml
   - .config/alacritty/alacritty.toml
+  - .config/fish/config.fish
   - .tmux.conf
-  - .wezterm.lua
 
 ##############################################
 # oh-my-zsh
@@ -78,6 +82,16 @@ omz_plugins:
     git_repo: "https://github.com/zsh-users/zsh-completions.git"
   - name: zsh-vi-mode
     git_repo: "https://github.com/jeffreytse/zsh-vi-mode"
+
+##############################################
+# oh-my-fish
+##############################################
+omf_plugins:
+  - "nodenv"
+  - "https://github.com/catppuccin/fish"
+
+fisher_plugins:
+  - "jethrokuan/fzf"
 
 ##############################################
 # git-repos

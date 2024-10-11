@@ -16,3 +16,30 @@
     dest: "{{omz_home}}/custom/plugins/{{item.name}}"
     repo: "{{item.git_repo}}"
   with_items: "{{omz_plugins}}"
+
+- name: get oh-my-fish repo
+  git:
+    repo: "https://github.com/oh-my-fish/oh-my-fish.git"
+    dest: ~/.local/share/git/oh-my-fish
+
+- name: install oh-my-fish
+  ansible.builtin.shell:
+    cmd: "bin/install --offline --noninteractive"
+    executable: /opt/homebrew/bin/fish
+    chdir: ~/.local/share/git/oh-my-fish
+    creates: ~/.local/share/omf
+
+- name: Install oh my fish plugins
+  ansible.builtin.shell: >
+    fish -c "omf install {{item}}"
+  with_items: "{{omf_plugins}}"
+
+- name: Install Fisher
+  ansible.builtin.shell:
+    cmd: curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    executable: /opt/homebrew/bin/fish
+
+- name: Install fisher plugins
+  ansible.builtin.shell: >
+    fish -c "fisher install {{item}}"
+  with_items: "{{fisher_plugins}}"
