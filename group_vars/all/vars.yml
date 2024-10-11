@@ -22,12 +22,10 @@ homebrew_installed_packages:
   - ripgrep
   - fzf
   - bat
-  - aerospace
   - fd
 
 homebrew_taps:
   - nikitabobko/tap
-  - homebrew/cask-fonts
   - FelixKratz/formulae
 
 homebrew_cask_appdir: /Applications
@@ -45,6 +43,7 @@ homebrew_cask_apps:
   - font-jetbrains-mono-nerd-font
   - font-fira-code-nerd-font
   - wezterm
+  - aerospace
 
 homebrew_cask_accept_external_apps: true
 

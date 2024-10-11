@@ -5,6 +5,10 @@ import = [
   "~/.config/alacritty/catppuccin//catppuccin-mocha.toml"
 ]
 
+[shell]
+program = "/opt/homebrew/bin/fish"
+args = ["--login", "-c", "tmux a -t base || tmux new -s base"]
+
 [font]
 normal = {family= "ComicCodeLigatures Nerd Font", style = "Regular"}
 size = 14.0

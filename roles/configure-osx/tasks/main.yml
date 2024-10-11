@@ -1,7 +1,4 @@
 ---
-- name: Add yabai to sudoers
-  command: "{{ role_path }}/files/add-yabai-to-sudoers.sh"
-  become: true
 
 # Finder
 - name: Show hidden files in Finder
