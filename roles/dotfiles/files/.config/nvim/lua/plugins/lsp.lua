@@ -421,6 +421,7 @@ return {
                         client.server_capabilities.documentFormattingProvider = false
                         client.server_capabilities.documentRangeFormattingProvider = false
                     end,
+                expose_as_code_action = "all",
                 tsserver_file_preferences = {
                     includeInlayParameterNameHints = "all",
                     includeInlayParameterNameHintsWhenArgumentMatchesName = false,

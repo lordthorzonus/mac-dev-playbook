@@ -39,6 +39,7 @@ opt.clipboard:append("unnamedplus")
 
 opt.splitright = true
 opt.splitbelow = true
-opt.foldenable = false
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldmethod = "expr"
+opt.foldenable = true
+opt.foldlevel = 1000
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
