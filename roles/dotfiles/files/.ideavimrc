@@ -85,12 +85,12 @@ nmap <leader>vd <Action>(ShowErrorDescription)
 inoremap <c-h> :action ParameterInfo<CR>
 
 " Harpoon
-map <c-e> <Action>(ShowHarpoon)<CR>
-map <leader>a <Action>(AddToHarpoon)
-nnoremap <leader>1 :action GotoHarpoon1<CR>
-nnoremap <leader>2 :action GotoHarpoon2<CR>
-nnoremap <leader>3 :action GotoHarpoon3<CR>
-nnoremap <leader>4 :action GotoHarpoon4<CR>
+map <c-e> <Action>(HarpoonerToggleQuickMenu)<CR>
+map <leader>a <Action>(HarpoonerToggleFile)
+nnoremap <leader>1 :action HarpoonerOpenFile0<CR>
+nnoremap <leader>2 :action HarpoonerOpenFile1<CR>
+nnoremap <leader>3 :action HarpoonerOpenFile2<CR>
+nnoremap <leader>4 :action HarpoonerOpenFile3<CR>
 
 " Refactoring
 nnoremap <leader>vrn :action RenameElement<cr>
