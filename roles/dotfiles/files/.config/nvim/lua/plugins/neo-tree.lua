@@ -19,7 +19,7 @@ return {
                     }
                 },
             }
-        }, true);
+        });
 
         vim.keymap.set("n", "<leader>s", function()
             require('neo-tree.command').execute({ source = "filesystem", position = "float", reveal = true, toggle = true })

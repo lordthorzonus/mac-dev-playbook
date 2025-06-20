@@ -3,11 +3,17 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
+		---@type CatppuccinOptions
 		opts = {
 			flavour = "mocha",
+			dim_inactive = {
+				enabled = true,
+				percentage = 0.1,
+			},
 			integrations = {
 				notify = true,
 				aerial = true,
+				blink_cmp = true,
 				cmp = true,
 				gitsigns = true,
 				lsp_trouble = true,

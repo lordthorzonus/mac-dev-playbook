@@ -12,6 +12,8 @@ return {
 				},
 			},
 		},
+		--- @class NoiceConfig
+		--- @field routes NoiceRouteConfig[]
 		opts = {
 			routes = {
 				{
@@ -34,7 +36,9 @@ return {
 			},
 
 			-- you can enable a preset for easier configuration
+			--- @type NoicePresets
 			presets = {
+				cmdline_output_to_split = true,
 				bottom_search = true, -- use a classic bottom cmdline for search
 				command_palette = true, -- position the cmdline and popupmenu together
 				long_message_to_split = true, -- long messages will be sent to a split

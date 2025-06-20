@@ -10,11 +10,8 @@ return {
 			},
 			{
 				"folke/lazydev.nvim",
-				ft = "lua", -- only load on lua files
-				opts = {},
 			},
 		},
-		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
 			keymap = {
@@ -82,6 +79,7 @@ return {
 				},
 				menu = {
 					enabled = true,
+					max_height = 20,
 					border = "single",
 					winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 					draw = {
