@@ -29,6 +29,6 @@ Available tags:
 - dotfiles
 - homebrew
 - nvim
-- oh-my-zsh
+- oh-my-fish
 - git-repos
 - configure-osx
