@@ -15,7 +15,6 @@ homebrew_installed_packages:
   - wget
   - thefuck
   - kubernetes-cli
-  - zsh
   - tmux
   - sketchybar
   - lazygit
@@ -38,6 +37,7 @@ homebrew_cask_apps:
   - chromedriver
   - docker
   - dropbox
+  - ghostty
   - google-chrome
   - slack
   - jetbrains-toolbox
@@ -46,7 +46,6 @@ homebrew_cask_apps:
   - insomnia
   - font-jetbrains-mono-nerd-font
   - font-fira-code-nerd-font
-  - alacritty
   - aerospace
 
 homebrew_cask_accept_external_apps: true
@@ -62,26 +61,9 @@ dotfiles_files:
   - .config/nvim
   - .config/sketchybar
   - .config/aerospace/aerospace.toml
-  - .config/alacritty/alacritty.toml
+  - .config/ghostty/config
   - .config/fish/config.fish
   - .tmux.conf
-
-##############################################
-# oh-my-zsh
-##############################################
-omz_home: "{{home_dir}}/.oh-my-zsh"
-omz_themes:
-  - name: spaceship
-    git_repo: "https://github.com/spaceship-prompt/spaceship-prompt.git"
-omz_plugins:
-  - name: zsh-syntax-highlighting
-    git_repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-  - name: zsh-autosuggestions
-    git_repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
-  - name: zsh-completions
-    git_repo: "https://github.com/zsh-users/zsh-completions.git"
-  - name: zsh-vi-mode
-    git_repo: "https://github.com/jeffreytse/zsh-vi-mode"
 
 ##############################################
 # oh-my-fish
@@ -119,14 +101,3 @@ git_project_base_folders:
   - "{{home_dir}}/projects"
   - "{{home_dir}}/projects/personal"
   - "{{home_dir}}/projects/work"
-
-##############################################
-# nvm
-##############################################
-nvm_version: "0.39.5"
-nvm_location: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-nvm_node_versions:
-  - version: "v16"
-  - version: "v18"
-  - version: "v20"
-nvm_default_node_version: "v16"

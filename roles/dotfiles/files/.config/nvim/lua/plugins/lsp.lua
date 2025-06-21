@@ -21,6 +21,8 @@ return {
 					"ansiblels",
 					"lua_ls",
 					"gopls",
+					"kulala-fmt",
+					"kulala-ls",
 					"spectral",
 					"dockerls",
 					"docker_compose_language_service",

@@ -91,11 +91,11 @@ esc = 'mode main'
 # Automate moving windows to workspaces
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 1'
+run = ['layout tiling', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-id = 'com.slack.Slack'
-run = 'move-node-to-workspace 1'
+run = [ ['layout tiling', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
@@ -118,12 +118,8 @@ if.app-id = 'com.jetbrains.webstorm'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'org.alacritty'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'org.alacritty'
-run = 'layout tiling'
+if.app-id = 'com.mitchellh.ghostty'
+run = ['layout tiling', 'move-node-to-workspace 4']
 
 # windows that should float
 [[on-window-detected]]

@@ -7,10 +7,8 @@
       tags: ["homebrew"]
     - role: nvim
       tags: ["nvim"]
-    - role: oh-my-zsh
-      tags: ["oh-my-zsh"]
-    - role: nvm
-      tags: ["nvm"]
+    - role: oh-my-fish
+      tags: ["oh-my-fish"]
     - role: git-repos
       tags: ["git-repos"]
     - role: dotfiles
